@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script src="./reactive.js"></script>
+  <script>
+    const person = reactive({name: 'wangxu', age: 12})
+    const animal = reactive({name: 'dog'})
+
+    watchEffect(() => {
+      console.log(`effect1: ${person.name} is ${person.age}`)
+    })
+
+    watchEffect(() => {
+      console.log(`effect2: hello ${person.name}`)
+    })
+
+    watchEffect(() => {
+      console.log(`effect3: ${person.name} has a ${animal.name}`)
+    })
+
+    watchEffect(() => {
+      console.log(`effect4: animal is ${animal.name}`)
+    })
+
+    setTimeout(() => {
+      // person.name = 'xu'
+      animal.name = 'cat'
+    }, 1000)
+  </script>
+  
+</body>
+</html>
