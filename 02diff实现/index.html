@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="./renderer.js"></script>
+
+    <script>
+      // 1. 通过h函数来创建一个vnode
+      const vnode = h("div", { class: "wangxu" }, [
+        h("h1", null, "手写MiniVue"),
+        h('button', {onClick: function(){console.log('edit')}}, '修改')
+      ]);
+      // const vnode = h("div", { class: "wangxu" }, [
+      //   h("h1", null, [
+      //     h('h2', null, 'h2-4')
+      //   ]),
+      //   h('button', {onClick: function(){console.log('edit')}}, '修改')
+      // ]);
+
+      // 2. 通过mount函数将vnode挂载到app元素上
+      mount(vnode, document.querySelector("#app"));
+      
+      // 3. 通过patch函数更新vnode
+      // const vnode2 = h("div", { class: "wangxu2" }, [
+      //   h("h1", null, "手写MiniVue - diff"),
+      //   h('button', {onClick: function(){console.log('edit')}}, '修改')
+      // ]);
+
+      const vnode2 = h("div", { class: "wangxu" }, [
+        h("h1", null, [
+          h('h2', null, 'h2-1'),
+          h('h2', null, 'h2-2')
+        ]),
+        h('button', {onClick: function(){console.log('edit')}}, '修改')
+      ]);
+
+      setTimeout(() => patch(vnode, vnode2), 1000)
+      
+    </script>
+  </body>
+</html>
+
+
