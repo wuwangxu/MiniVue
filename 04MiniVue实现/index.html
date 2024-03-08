@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="../02diff实现/renderer.js"></script>
+  <script src="../03响应式系统/reactive.js"></script>
+  <script src="./index.js"></script>
+
+  <script>
+    const App = {
+      data: reactive({
+        counter: 0
+      }),
+      render() {
+      // 1. 通过h函数来创建一个vnode
+        return h("div", { class: "wangxu" }, [
+          h("h1", null, "手写MiniVue"),
+          h("h1", null, `当前计数${this.data.counter}`),
+          h('button', {onClick: () => {this.data.counter++}}, '修改')
+        ]);
+      }
+    }
+
+    createApp(App).mount('#app')
+
+    // setTimeout(() => {
+
+    // })
+    
+  </script>
+</body>
+</html>
